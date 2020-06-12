@@ -21,5 +21,6 @@ export default class UserStore {
   signout() {
     this.username = null;
     this.authService.removeToken();
+    this.authService.removeUsername();
   }
 }

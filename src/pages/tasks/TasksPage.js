@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import { Fab, IconButton } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
-import SignOutIcon from '@material-ui/icons/ExitToApp'
+import SignOutIcon from '@material-ui/icons/ExitToApp';
 import styled from 'styled-components';
 import Task from '../../components/Task';
 import TasksFilters from '../../components/TasksFilters';
@@ -45,7 +45,7 @@ const EmptyTasksPlaceholder = styled.p`
 
 const SignOutIconContainer = styled.div`
   margin-left: 10px;
-  
+
   .signOutIcon {
     fill: #edf4ff;
   }
@@ -54,10 +54,14 @@ const SignOutIconContainer = styled.div`
 @inject('tasksStore', 'routerStore', 'userStore')
 @observer
 class TasksPage extends Component {
+  username = null;
+
   componentDidMount() {
+    const { authService } = this.props.userStore;
     this.props.tasksStore.fetchTasks();
+    this.username = authService.loadUsername();
   }
-  
+
   handleSignOut = () => {
     const { userStore, tasksStore, routerStore } = this.props;
     userStore.signout();
@@ -69,10 +73,14 @@ class TasksPage extends Component {
     const { tasksStore } = this.props;
 
     if (!tasksStore.tasks.length) {
-      return <EmptyTasksPlaceholder>No tasks available. Create one?</EmptyTasksPlaceholder>
+      return (
+        <EmptyTasksPlaceholder>
+          No tasks available. Create one?
+        </EmptyTasksPlaceholder>
+      );
     }
 
-    return tasksStore.tasks.map(task => (
+    return tasksStore.tasks.map((task) => (
       <Task
         key={task.id}
         id={task.id}
@@ -87,11 +95,11 @@ class TasksPage extends Component {
     return (
       <TasksWrapper>
         <TasksHeader>
-          <Title>Get things done.</Title>
+          <Title>Hi {this.username}, Let's get things done.</Title>
 
           <CreateButtonContainer>
             <Fab
-              variant="extended"
+              variant='extended'
               onClick={() => this.props.routerStore.push('/tasks/create')}
             >
               <AddIcon />
@@ -100,7 +108,7 @@ class TasksPage extends Component {
 
             <SignOutIconContainer>
               <IconButton onClick={this.handleSignOut}>
-                <SignOutIcon className="signOutIcon" />
+                <SignOutIcon className='signOutIcon' />
               </IconButton>
             </SignOutIconContainer>
           </CreateButtonContainer>
@@ -108,9 +116,7 @@ class TasksPage extends Component {
 
         <TasksFilters />
 
-        <TasksContainer>
-          {this.renderTasks()}
-        </TasksContainer>
+        <TasksContainer>{this.renderTasks()}</TasksContainer>
       </TasksWrapper>
     );
   }

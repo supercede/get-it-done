@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default class BaseHttpService {
-  BASE_URL = 'http://localhost:5000';
+  BASE_URL = 'http://192.168.43.21:5000';
   _accessToken = null;
 
   constructor(routerStore) {
@@ -77,5 +77,18 @@ export default class BaseHttpService {
 
   removeToken() {
     localStorage.removeItem('accessToken');
+  }
+
+  saveUsername(username) {
+    return localStorage.setItem('username', username);
+  }
+
+  removeUsername() {
+    localStorage.removeItem('username');
+  }
+
+  loadUsername() {
+    const username = localStorage.getItem('username');
+    return username;
   }
 }

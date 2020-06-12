@@ -47,46 +47,46 @@ class SignInPage extends Component {
   };
 
   goToSignUp = () => {
-    this.props.routerStore.push('/signup')
+    this.props.routerStore.push('/signup');
   };
 
   render() {
     const { errorMessage } = this.state;
 
     return (
-      <div className="fullscreen-wrapper">
+      <div className='fullscreen-wrapper'>
         <FormContainer>
           <Heading>Hello!</Heading>
           <p>Fill in your username and password to sign in.</p>
-          
+
           {errorMessage && <ErrorMessage message={this.state.errorMessage} />}
 
           <div>
             <FormField
-              id="outlined-name"
-              label="Username"
-              margin="dense"
-              variant="outlined"
-              onChange={e => this.setState({ username: e.target.value })}
+              id='outlined-name'
+              label='Username'
+              margin='dense'
+              variant='outlined'
+              onChange={(e) => this.setState({ username: e.target.value })}
             />
           </div>
           <div>
             <FormField
-              id="outlined-name"
-              label="Password"
-              margin="dense"
-              variant="outlined"
-              type="password"
-              onChange={e => this.setState({ password: e.target.value })}
+              id='outlined-name'
+              label='Password'
+              margin='dense'
+              variant='outlined'
+              type='password'
+              onChange={(e) => this.setState({ password: e.target.value })}
             />
           </div>
-          <hr/>
+          <hr />
           <div>
             <Button
               style={{ marginBottom: '10px' }}
               fullWidth
-              variant="contained"
-              color="primary"
+              variant='contained'
+              color='primary'
               onClick={this.submit}
             >
               SIGN IN

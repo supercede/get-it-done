@@ -58,10 +58,11 @@ class TasksFilters extends Component {
         <Grid
           justify="space-between" // Add it here :)
           container
+          spacing={5}
         >
-          <Grid item>
+          <Grid item xs={12} sm={6}>
             <ControlContainer>
-              <FormControl style={{ width: '220px' }}>
+              <FormControl style={{ width: '100%' }}>
                 <TextField
                   placeholder="Search..."
                   value={this.state.search}
@@ -78,9 +79,9 @@ class TasksFilters extends Component {
             </ControlContainer>
           </Grid>
 
-          <Grid item>
+          <Grid item xs={12} sm={6}>
             <ControlContainer>
-              <FormControl style={{ width: '220px' }}>
+              <FormControl style={{ width: '100%' }}>
                 <Select
                   value={this.state.status}
                   onChange={this.handleStatusFilterChange}

@@ -37,17 +37,17 @@ const TasksContainer = styled.div`
   padding-top: 20px;
 `;
 
-const EmptyTasksPlaceholder = styled.p`
-  color: #edf4ff;
+const EmptyTasksPlaceholder = styled.h2`
+  color: brown;
   text-align: center;
-  font-size: 22px;
+  font-size: 2rem;
 `;
 
 const SignOutIconContainer = styled.div`
   margin-left: 10px;
 
   .signOutIcon {
-    fill: #edf4ff;
+    fill: black;
   }
 `;
 
@@ -95,7 +95,11 @@ class TasksPage extends Component {
     return (
       <TasksWrapper>
         <TasksHeader>
-          <Title>Hi {this.username}, Let's get things done.</Title>
+          <Title>
+            <span style={{ color: 'brown' }}>
+              Hi {this.username}, Let's get things done.
+            </span>
+          </Title>
 
           <CreateButtonContainer>
             <Fab

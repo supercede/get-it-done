@@ -62,7 +62,7 @@ class SignUpPage extends Component {
 
           <div>
             <FormField
-              id='outlined-name'
+              className='outlined-name'
               label='Username'
               margin='dense'
               variant='outlined'
@@ -71,7 +71,7 @@ class SignUpPage extends Component {
           </div>
           <div>
             <FormField
-              id='outlined-name'
+              className='outlined-name'
               label='Password'
               margin='dense'
               variant='outlined'

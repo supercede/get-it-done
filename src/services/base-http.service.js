@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default class BaseHttpService {
-  BASE_URL = 'http://192.168.43.21:5000';
+  BASE_URL = 'http://get-it-done.us-east-2.elasticbeanstalk.com';
   _accessToken = null;
 
   constructor(routerStore) {
